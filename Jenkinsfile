@@ -25,7 +25,7 @@ pipeline {
              
               script {
                   
-                    docker.withRegistry("https://myacrtemp.azurecr.io", 'acr_id') {
+                    docker.withRegistry("myacrtemp.azurecr.io", 'acr_id') {
                         def testImage = docker.build("javaimagewithoutwebsphere:${env.BUILD_ID}", './')
                         testImage.push()
               }
