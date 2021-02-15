@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
                     HELM_EXPERIMENTAL_OCI=1
-                    KUBECONFIG = 'C:/Users/jai/.kube/config'
+                    KUBECONFIG = 'C:/Users/shivam/.kube/config'
                 }
     stages {
         stage('Build') {           
@@ -36,12 +36,12 @@ pipeline {
           stage('Deploy- using Helm') {
                 
             steps{         
-            powershell('helm package ./app/nodejs')
+            powershell('helm package ./nodejs')
              powershell('helm upgrade new nodejs-0.1.0.tgz')    
             
              powershell("docker run -dp 5000:5000 --restart=always --name registry registry")             
              powershell("helm registry login -u jai localhost:5000 --password-stdin -unsecure")
-            powershell("helm chart save ./app/nodejs/ localhost:5000/nodejs/nodejs:1.0.0")
+            powershell("helm chart save ./nodejs/ localhost:5000/nodejs/nodejs:1.0.0")
             powershell("helm chart list")
             powershell("helm chart export localhost:5000/nodejs/nodejs:1.0.0")
             powershell("helm chart push localhost:5000/nodejs/nodejs:1.0.0")
