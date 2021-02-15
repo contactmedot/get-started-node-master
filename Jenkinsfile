@@ -40,7 +40,7 @@ pipeline {
                 
             steps{         
             powershell('helm package ./nodejs')
-             powershell('helm install new nodejs-0.1.0.tgz')    
+             powershell('helm install newupdate nodejs-0.1.0.tgz')    
             
             
              
