@@ -1,14 +1,15 @@
-FROM node:6-alpine
+FROM node:latest
 
-ADD views /app/views
-ADD package.json /app
-ADD server.js /app
+USER root
+RUN mkdir -p /home/node/app/views 
+WORKDIR /home/node/app
 
-RUN cd /app; npm install
+COPY . .
+RUN npm install
 
-ENV NODE_ENV production
-ENV PORT 8080
-EXPOSE 8080
+ENV PORT 8082
+EXPOSE 8082
 
-WORKDIR "/app"
-CMD [ "npm", "start" ]
+USER 1001
+CMD ["npm", "start"]
+LABEL app='nodejs'
