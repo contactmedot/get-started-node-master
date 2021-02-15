@@ -28,7 +28,7 @@ pipeline {
                     // docker.withRegistry("https://myacrtemp.azurecr.io", 'acr_id') {
                     //     def testImage = docker.build("javaimagewithoutwebsphere:${env.BUILD_ID}", './')
                     //     testImage.push()
-                        docker.withRegistry("https://registry.hub.docker.com", 'docker_id') {
+                        docker.withRegistry("https://registry.hub.docker.com",'docker_id') {
                         def testImage = docker.build("dockershivam2020/nodejsimage:${env.BUILD_ID}", './')
                         testImage.push()
               }

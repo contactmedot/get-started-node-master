@@ -6,10 +6,10 @@ replicaCount: 1
 
 image:
   #repository: myacrtemp.azurecr.io/javaimagewithoutwebsphere
-  repository: dockershivam2020/nodejsimage
+  repository: registry.hub.docker.com/dockershivam2020/nodejsimage
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "15"
+  tag: "19"
 
 imagePullSecrets: []
 nameOverride: ""
